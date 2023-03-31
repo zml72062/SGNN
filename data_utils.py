@@ -95,49 +95,6 @@ def shortest_dist_sparse_mult(adj_mat: sparse.coo_matrix,
     return np.asarray(neighbor_dist)
 
 
-def vec_translate(a: np.ndarray,
-                  my_dict: dict) -> np.ndarray:
-    r"""Given a numpy array and a dict, convert all value in the array corresponding to
-        the key-value relationship specified by the dict.
-    Args:
-        a (np.ndarray): A numpy array.
-        my_dict (dict): A dict.
-    """
-    return np.vectorize(my_dict.__getitem__)(a)
-
-
-def get_edge_original_index(edge_list: np.ndarray,
-                            edge_dict: dict) -> np.ndarray:
-    r"""Return edge index for input edge list given a dict specify the index of all edge.
-
-    Args:
-        edge_list (np.ndarray): Edge list of graph.
-        edge_dict (dict): A dict to save index for all edges in the graph.
-    """
-    return np.array(itemgetter(*map(tuple, edge_list.T))(edge_dict))
-
-
-def create_edge_dict(edge_list: np.ndarray) -> dict:
-    r"""Create an edge dict to record index for all edges.
-    Args:
-        edge_list (np.ndarray): Edge list of graph.
-    """
-    return dict(zip(map(tuple, edge_list.T), range(edge_list.shape[-1])))
-
-
-def reindex_edge_list(edge_list: np.ndarray) -> (np.ndarray, dict, int):
-    """Reindex edge list to have node index from 0 to the num_nodes - 1.
-    Args:
-        edge_list (np.ndarray): Edge list of graph.
-    """
-    unique_nodes = np.unique(edge_list)
-    num_nodes = len(unique_nodes)
-    index_dict = dict(zip(unique_nodes, range(num_nodes)))
-    index_dict_back = dict(zip(range(num_nodes), unique_nodes))
-    new_edge_list = vec_translate(edge_list, index_dict)
-    return new_edge_list, index_dict_back, num_nodes
-
-
 def extract_de_feature(data: Data,
                        num_hops: int) -> Data:
     r"""Extract distance encoding features.

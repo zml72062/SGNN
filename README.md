@@ -6,7 +6,7 @@
 python=3.8
 torch=1.11.0
 PyG=2.1.0
-pytorch_lighting=1.9.4
+pytorch_lightning=1.9.4
 wandb=0.13.11
 ```
 
