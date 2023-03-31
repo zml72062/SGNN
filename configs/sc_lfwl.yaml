@@ -1,0 +1,16 @@
+lr: 0.001
+min_lr: 0.00001
+batch_size: 256
+drop_prob: 0.0
+num_epochs: 2000
+gnn_name: 'GINETuple'
+model_name: 'LFWL'
+policy: "ego_nets_de"
+hidden_channels: 64
+num_layers: 5
+subgraph_pooling: 'SV'
+runs: 3
+JK: 'last'
+patience: 10
+factor: 0.9
+norm_type: "None"

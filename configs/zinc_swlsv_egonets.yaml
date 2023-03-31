@@ -1,0 +1,14 @@
+lr: 0.001
+batch_size: 128
+drop_prob: 0.0
+num_epochs: 500
+gnn_name: 'GINE'
+model_name: 'SWL'
+policy: "ego_nets"
+num_hops: 3
+hidden_channels: 128
+num_layers: 6
+subgraph_pooling: 'SV'
+runs: 10
+JK: 'last'
+pooling_method: "mean"
